@@ -4,7 +4,7 @@ import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Router} from '@angular/router';
-import { CoursesService } from '../services/course.service';
+import { CoursesService } from '../services/courses.service';
 
 
 @Component({

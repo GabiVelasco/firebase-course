@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 import {AngularFireStorage} from '@angular/fire/storage';
 import firebase from 'firebase/app';
 import Timestamp = firebase.firestore.Timestamp;
-import { CoursesService } from '../services/course.service';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'create-course',
@@ -48,6 +48,40 @@ courseId: string;
   ngOnInit() {
     this.courseId = this.afs.createId();
     
+  }
+
+  onCreateCourse() {
+      const val = this.form.value;
+
+      const newCourse: Partial<Course> = {
+        description: val.description,
+        url: val.url,
+        longDescription: val.longDescription,
+        promo: val.promo,
+        categories: [val.category]
+      }
+
+
+
+      newCourse.promoStartAt = Timestamp.fromDate(this.form.value.promoStartAt);
+      
+      this.coursesService.createCourse(newCourse, this.courseId)
+      .pipe(
+          tap(course=> 
+            {
+            console.log("Created new course: ", course);
+            this.router.navigateByUrl("/courses"); 
+            }
+            
+            ),
+          catchError(err => {
+            console.log(err);
+            alert("Could not create the course.");
+            return throwError(err);
+          })
+
+      )
+      .subscribe()
   }
 
 }
