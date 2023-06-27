@@ -43,6 +43,14 @@ courseId: string;
     const file:File = event.target.files[0];
     console.log(file.name);
 
+    const filePath = `courses/${this.courseId}/${file.name}`;
+
+    const task = this.storage.upload(
+      filePath, 
+      file,
+      {cacheControl: "max-age=2592000,public"}  )
+      task.snapshotChanges().subscribe()
+
   }
 
   ngOnInit() {
