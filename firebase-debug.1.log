@@ -1,0 +1,53 @@
+[debug] [2023-06-26T11:33:23.366Z] ----------------------------------------------------------------------
+[debug] [2023-06-26T11:33:23.368Z] Command:       C:\Program Files\nodejs\node.exe C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --only firestore,auth,functions --import test-data
+[debug] [2023-06-26T11:33:23.368Z] CLI Version:   11.1.0
+[debug] [2023-06-26T11:33:23.368Z] Platform:      win32
+[debug] [2023-06-26T11:33:23.368Z] Node Version:  v18.16.0
+[debug] [2023-06-26T11:33:23.369Z] Time:          Mon Jun 26 2023 13:33:23 GMT+0200 (Mitteleuropäische Sommerzeit)
+[debug] [2023-06-26T11:33:23.369Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-26T11:33:23.424Z] Object ".emulators" in "firebase.json" has unknown property: {"additionalProperty":"singleProjectMode"}
+[debug] [2023-06-26T11:33:23.429Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-26T11:33:23.429Z] > authorizing via signed-in user (gabriela.luppe@gmail.com)
+[debug] [2023-06-26T11:33:23.544Z] java version "19.0.1" 2022-10-18
+
+[debug] [2023-06-26T11:33:23.545Z] Java(TM) SE Runtime Environment (build 19.0.1+10-21)
+Java HotSpot(TM) 64-Bit Server VM (build 19.0.1+10-21, mixed mode, sharing)
+
+[debug] [2023-06-26T11:33:23.570Z] Parsed Java major version: 19
+[info] i  emulators: Starting emulators: auth, functions, firestore {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore"}}
+[warn] !  hub: emulator hub unable to start on port 4400, starting on 4401 instead. {"metadata":{"emulator":{"name":"hub"},"message":"emulator hub unable to start on port 4400, starting on 4401 instead."}}
+[debug] [2023-06-26T11:33:23.639Z] [hub] writing locator at C:\Users\gabri\AppData\Local\Temp\hub-fir-course-c860e.json
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: database, hosting, pubsub, storage {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mdatabase, hosting, pubsub, storage\u001b[22m"}}
+[info] +  functions: Using node@18 from host. {"metadata":{"emulator":{"name":"functions"},"message":"Using node@18 from host."}}
+[debug] [2023-06-26T11:33:23.680Z] defaultcredentials: writing to file C:\Users\gabri\AppData\Roaming\firebase\gabriela_luppe_gmail.com_application_default_credentials.json
+[debug] [2023-06-26T11:33:23.683Z] Setting GAC to C:\Users\gabri\AppData\Roaming\firebase\gabriela_luppe_gmail.com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\gabri\\AppData\\Roaming\\firebase\\gabriela_luppe_gmail.com_application_default_credentials.json"}}
+[debug] [2023-06-26T11:33:23.685Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/fir-course-c860e/adminSdkConfig [none]
+[debug] [2023-06-26T11:33:24.869Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/fir-course-c860e/adminSdkConfig 200
+[debug] [2023-06-26T11:33:24.869Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/fir-course-c860e/adminSdkConfig {"projectId":"fir-course-c860e","storageBucket":"fir-course-c860e.appspot.com","locationId":"europe-west"}
+[info] i  firestore: Importing data from C:\Angular_Projekten\firebase-course\test-data\firestore_export\firestore_export.overall_export_metadata {"metadata":{"emulator":{"name":"firestore"},"message":"Importing data from C:\\Angular_Projekten\\firebase-course\\test-data\\firestore_export\\firestore_export.overall_export_metadata"}}
+[info] i  firestore: downloading cloud-firestore-emulator-v1.14.3.jar... {"metadata":{"emulator":{"name":"firestore"},"message":"downloading cloud-firestore-emulator-v1.14.3.jar..."}}
+[debug] [2023-06-26T11:33:24.888Z] >>> [apiv2][query] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.14.3.jar 
+[debug] [2023-06-26T11:33:25.551Z] <<< [apiv2][status] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.14.3.jar 200
+[debug] [2023-06-26T11:33:25.551Z] <<< [apiv2][body] GET https://storage.googleapis.com/firebase-preview-drop/emulator/cloud-firestore-emulator-v1.14.3.jar [stream]
+[info] i  firestore: Removing outdated emulator files: cloud-firestore-emulator-v1.17.4.jar {"metadata":{"emulator":{"name":"firestore"},"message":"Removing outdated emulator files: cloud-firestore-emulator-v1.17.4.jar"}}
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  functions: Stopping Functions Emulator {"metadata":{"emulator":{"name":"functions"},"message":"Stopping Functions Emulator"}}
+[info] i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
+[info] i  hub: Stopping emulator hub {"metadata":{"emulator":{"name":"hub"},"message":"Stopping emulator hub"}}
+[debug] [2023-06-26T11:33:38.117Z] Error: EBUSY: resource busy or locked, unlink '\\?\C:\Users\gabri\.cache\firebase\emulators\cloud-firestore-emulator-v1.17.4.jar'
+    at unlinkSync (node:fs:1808:3)
+    at _unlinkSync (node:internal/fs/rimraf:214:14)
+    at rimrafSync (node:internal/fs/rimraf:195:7)
+    at Object.rmSync (node:fs:1276:10)
+    at Object.removeSync (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\node_modules\fs-extra\lib\remove\index.js:15:28)
+    at removeOldFiles (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\download.js:72:16)
+    at downloadEmulator (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\download.js:32:5)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async Object.start (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\downloadableEmulators.js:349:13)
+    at async EmulatorRegistry.start (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\registry.js:16:9)
+    at async startEmulator (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\controller.js:100:5)
+    at async Object.startAll (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\emulator\controller.js:372:9)
+    at async Command.actionFn (C:\Angular_Projekten\firebase-course\node_modules\firebase-tools\lib\commands\emulators-start.js:29:35)
+[error] 
+[error] Error: An unexpected error has occurred.

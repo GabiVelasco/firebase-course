@@ -84,7 +84,7 @@ import {MatNativeDateModule} from '@angular/material/core';
   ],
   providers: [
    { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
-   { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 8091] : undefined },
+   { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 1234] : undefined },
    { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined }
   ],
   bootstrap: [AppComponent]
