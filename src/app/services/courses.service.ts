@@ -6,7 +6,7 @@ import { Observable, from, of } from "rxjs";
 import { convertSnaps } from "./db-util";
 import { concatMap, map, tap } from "rxjs/operators";
 import { Lesson } from "../model/lesson";
-import OrderByDirection = firebase.firestore.OrderByDirection;
+// import OrderByDirection = firebase.firestore.OrderByDirection;
 
 
 @Injectable({
@@ -15,8 +15,8 @@ import OrderByDirection = firebase.firestore.OrderByDirection;
 export class CoursesService {
   constructor(private db: AngularFirestore) {}
 
-findLessons(courseId: string, sortOrder: OrderByDirection = 'asc',
-) {}
+// findLessons(courseId: string, sortOrder: OrderByDirection = 'asc',
+// ) {}
 
 findCourseByUrl(courseUrl: string): Observable<any> | null {
 
