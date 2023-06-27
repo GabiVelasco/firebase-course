@@ -17,10 +17,14 @@ export class CoursesService {
 
     }
 
-    updateCourse(CourseId:string, changes: Partial<Course>): Observable<any>
+    deleteCourse(courseId: string) {
+       return from(this.db.doc(`courses/${courseId}`).delete());
+    }
+
+    updateCourse(courseId:string, changes: Partial<Course>): Observable<any>
     
     {
-       return from(this.db.doc(`courses/${CourseId}`).update(changes));
+       return from(this.db.doc(`courses/${courseId}`).update(changes));
     }
 
     createCourse(newCourse: Partial<Course>, courseId?:string) {
