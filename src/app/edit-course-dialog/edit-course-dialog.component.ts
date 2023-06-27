@@ -13,7 +13,14 @@ import {Observable} from 'rxjs';
 })
 export class EditCourseDialogComponent {
 
-    constructor() {
+    constructor(private dialogRef: MatDialogRef<EditCourseDialogComponent>) 
+    {
+        
+
+    }
+
+    close() {
+        this.dialogRef.close();
 
     }
 }
