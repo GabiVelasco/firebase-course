@@ -6,6 +6,7 @@ import { Observable, from, of } from "rxjs";
 import { convertSnaps } from "./db-util";
 import { concatMap, map, tap } from "rxjs/operators";
 import { Lesson } from "../model/lesson";
+import firebase from "firebase";
 import OrderByDirection = firebase.firestore.OrderByDirection;
 
 
@@ -15,8 +16,20 @@ import OrderByDirection = firebase.firestore.OrderByDirection;
 export class CoursesService {
   constructor(private db: AngularFirestore) {}
 
- findLessons(courseId: string, sortOrder: OrderByDirection = 'asc',
- ) {}
+ findLessons(courseId: string, sortOrder: OrderByDirection = 'asc', 
+ pageNumber = 0, pageSize = 3): Observable<Lesson[]> {
+
+  return this.db.collection<Course>(`courses/${courseId}/lessons`,
+    ref => ref.orderBy("seqNo", sortOrder)
+    .limit(pageSize)
+    .startAfter(pageNumber * pageSize))
+
+    .get()
+    .pipe(
+      map(reults => convertSnaps<Lesson>(reults)),
+    ) 
+ }
+ 
 
 findCourseByUrl(courseUrl: string): Observable<any> | null {
 
