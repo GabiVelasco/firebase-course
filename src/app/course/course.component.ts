@@ -20,7 +20,8 @@ export class CourseComponent implements OnInit {
 
   displayedColumns = ['seqNo', 'description', 'duration'];
 
-  constructor(private route: ActivatedRoute,
+  constructor(
+    private route: ActivatedRoute,
     private coursesService: CoursesService) {
 
   }
