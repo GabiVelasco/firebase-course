@@ -40,6 +40,7 @@ import {CreateUserComponent} from './create-user/create-user.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {MatNativeDateModule} from '@angular/material/core';
 
+import "firebase/auth";
 
 
 @NgModule({
@@ -86,7 +87,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     AngularFireFunctionsModule
   ],
   providers: [
-   { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9099] : undefined },
+   { provide: USE_AUTH_EMULATOR, useValue: environment.useEmulators ? ['localhost', 9080] : undefined },
    { provide: USE_FIRESTORE_EMULATOR, useValue: environment.useEmulators ? ['localhost', 1234] : undefined },
    { provide: USE_FUNCTIONS_EMULATOR, useValue: environment.useEmulators ? ['localhost', 5001] : undefined },
    
