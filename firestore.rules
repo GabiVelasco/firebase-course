@@ -1,19 +1,29 @@
 rules_version = '2';
-
+//The order of the rules does not matter
+// if there#s one rule which allows, the same other which denies will not work above the allow / permission command
 service cloud.firestore {
   match /databases/{database}/documents {
+    allow read;
 
-    // This rule allows anyone with your Firestore database reference to view, edit,
-    // and delete all data in your Firestore database. It is useful for getting
-    // started, but it is configured to expire after 30 days because it
-    // leaves your app open to attackers. At that time, all client
-    // requests to your Firestore database will be denied.
-    //
-    // Make sure to write security rules for your app before that time, or else
-    // all client requests to your Firestore database will be denied until you Update
-    // your rules
-    match /{document=**} {
-      allow read, write: if request.time < timestamp.date(2023, 7, 17);
+    
+
+    match /courses/{courseId} {
+      allow get; //single user
+      allow list;  // query
+
+      allow write: if false;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+
+
+      match /lessons/{lessonId} {
+        allow read;
+
+      }
     }
+    match /courses/{courseId} {
+  
+    allow list: if false; }
   }
 }

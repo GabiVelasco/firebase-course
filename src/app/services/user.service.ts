@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFireAuth } from "@angular/fire/auth";
+import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -13,7 +14,9 @@ export class UserService {
     isLoggedOut$: Observable<boolean>;
     pictureUrl$: Observable<string>;
 
-    constructor(private afAuth: AngularFireAuth ) {
+    constructor(
+        private afAuth: AngularFireAuth,
+        private router: Router ) {
         //Just to show how it works
         // afAuth.idToken.subscribe(jwt => console.log("jwt", jwt));
         // afAuth.authState.subscribe(auth => console.log("auth", auth));
@@ -23,8 +26,11 @@ export class UserService {
         this.pictureUrl$ = afAuth.authState.pipe(map(user => user? user.photoURL : null));
     }
 
-    
+    logout() {
+
+            this.afAuth.signOut();
+            this.router.navigateByUrl('/login');
+
+    }   
     
 }
-
-
