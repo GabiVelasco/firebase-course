@@ -2,6 +2,7 @@ rules_version = '1';
 //The order of the rules does not matter
 // if there's one rule which allows, the same other which denies will not work above the allow / permission command
 // uid = unic firebase authenthication identifier
+//dolar and roud braces to check the value $(databases)
 service cloud.firestore {
 
   match /databases/{database}/documents {
@@ -9,6 +10,10 @@ service cloud.firestore {
     function isAuthenticated() {
       return request.auth.uid != null;
     }
+
+    function isKnownUser() {
+      //dolar and roud braces to check the value $(databases) or $(request.auth.uid))
+      return isAuthenticated() && exists(/$(databases)/{database}/documents/users/$(request.auth.uid));
 
     function isNonEmptyString(fieldName) {
       return request.resource.data[fieldName] is string && 
