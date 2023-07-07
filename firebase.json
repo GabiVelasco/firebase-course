@@ -62,7 +62,8 @@
       "port": 5000
     },
     "ui": {
-      "enabled": true
+      "enabled": true,
+      "port": 9150
     },
     "singleProjectMode": true,
     "storage": {
