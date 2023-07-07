@@ -1,4 +1,4 @@
-rules_version = '2';
+rules_version = '1';
 //The order of the rules does not matter
 // if there's one rule which allows, the same other which denies will not work above the allow / permission command
 // uid = unic firebase authenthication identifier
