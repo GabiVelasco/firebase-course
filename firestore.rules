@@ -1,11 +1,17 @@
-rules_version = '1';
+rules_version = '2';
 //The order of the rules does not matter
 // if there's one rule which allows, the same other which denies will not work above the allow / permission command
 // uid = unic firebase authenthication identifier
 //dolar and roud braces to check the value $(databases)
+//adding function is adding to check wheather the user can see some buttons and make some changes
 service cloud.firestore {
 
   match /databases/{database}/documents {
+
+    function isAdmin() {
+      return isAuthenticated() && 'admin' in request.auth.token && 
+      request.auth.token.admin == true;
+    }
     
     function isAuthenticated() {
       return request.auth.uid != null;
@@ -13,7 +19,10 @@ service cloud.firestore {
 
     function isKnownUser() {
       //dolar and roud braces to check the value $(databases) or $(request.auth.uid))
-      return isAuthenticated() && exists(/$(databases)/{database}/documents/users/$(request.auth.uid));
+      return isAuthenticated() && 
+      exists(/databases/$(database)/documents/users/$(request.auth.uid));
+      // get(/$(databases)/{database}/documents/users/$(request.auth.uid)).data;
+    }
 
     function isNonEmptyString(fieldName) {
       return request.resource.data[fieldName] is string && 
@@ -30,12 +39,18 @@ service cloud.firestore {
 
     match /courses/{courseId} {
       //if the uid is present, the the user is correctly autheticated
-      allow read: if isAuthenticated();
-      allow write: if isValidCourse() && isAuthenticated();
+      allow read: if isKnownUser();
+      allow create, update: if isValidCourse() && isAdmin() ;
+      allow delete: if isAdmin();
       
       match /lessons/{lessonId} {
-        allow read: if isAuthenticated();
+        allow read: if isKnownUser();
       }
+    }
+      match /{path=**}/lessons/{lessonId} {
+
+    allow read: if isKnownUser();
+    
     }
   }
 }
